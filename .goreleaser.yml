@@ -12,9 +12,11 @@ builds:
     goos:
       - darwin
       - linux
+      - windows
     goarch:
       - amd64
       - arm64
+      - 386
 release:
   prerelease: true
 archives:
