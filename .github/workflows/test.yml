@@ -15,7 +15,7 @@ jobs:
         with:
           go-version: ${{ matrix.go }}
           cache: true
-          cache-dependency-path: .
+          cache-dependency-path: go.sum
         id: go
 
       - name: Check out code into the Go module directory
