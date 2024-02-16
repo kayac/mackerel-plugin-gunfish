@@ -1,21 +1,20 @@
 LATEST_TAG := $(shell git describe --abbrev=0 --tags)
+export GO111MODULE := on
 
-setup:
-	go get \
-		github.com/laher/goxc \
-		github.com/tcnksm/ghr \
-		github.com/golang/lint/golint
-	go get -d -t ./...
-
-test: setup
+test:
 	go test -v ./...
 
-lint: setup
+lint:
 	go vet ./...
-	golint -set_exit_status ./...
 
 dist:
 	goxc
+
+packages:
+	goreleaser build --skip-validate --rm-dist
+
+packages-snapshot:
+	goreleaser build --skip-validate --rm-dist --snapshot
 
 clean:
 	rm -fr dist/*
@@ -23,4 +22,4 @@ clean:
 release: dist
 	ghr -u kayac -r mackerel-plugin-gunfish $(LATEST_TAG) dist/snapshot/
 
-.PHONY: packages test lint clean setup dist
+.PHONY: packages test lint clean dist
