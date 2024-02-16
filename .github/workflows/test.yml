@@ -8,12 +8,14 @@ jobs:
           - "1.21"
           - "1.20"
     name: Build
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - name: Set up Go
-        uses: actions/setup-go@v4
+        uses: actions/setup-go@v5
         with:
           go-version: ${{ matrix.go }}
+          cache: true
+          cache-dependency-path: .
         id: go
 
       - name: Check out code into the Go module directory
