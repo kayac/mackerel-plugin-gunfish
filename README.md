@@ -7,7 +7,7 @@ Mackerel plugin for [Gunfish](https://github.com/mackee/gunfish)
 Use [mkr](https://github.com/mackerelio/mkr).
 
 ```console
-# mkr plugin install kayac/mackerel-plugin-gunfish@v0.0.0
+# mkr plugin install kayac/mackerel-plugin-gunfish@v0.1.0
 ```
 
 ## Synopsis
