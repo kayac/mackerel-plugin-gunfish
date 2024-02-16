@@ -1,0 +1,34 @@
+before:
+  hooks:
+    - go mod download
+builds:
+  - env:
+      - CGO_ENABLED=0
+    main: ./
+    binary: mackerel-plugin-gunfish
+    ldflags:
+      - -s -w
+      - -X main.Version=v{{.Version}}
+    goos:
+      - darwin
+      - linux
+      - windows
+    goarch:
+      - amd64
+      - arm64
+      - 386
+release:
+  prerelease: true
+archives:
+  - format: zip
+    name_template: "{{.ProjectName}}_{{.Os}}_{{.Arch}}"
+checksum:
+  name_template: "checksums.txt"
+snapshot:
+  name_template: "{{ .Env.NIGHTLY_VERSION }}"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
