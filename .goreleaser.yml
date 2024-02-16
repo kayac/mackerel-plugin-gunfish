@@ -18,7 +18,8 @@ builds:
 release:
   prerelease: true
 archives:
-  - name_template: "{{.ProjectName}}_v{{.Version}}_{{.Os}}_{{.Arch}}"
+  - format: zip
+    name_template: "{{.ProjectName}}_{{.Os}}_{{.Arch}}"
 checksum:
   name_template: "checksums.txt"
 snapshot:
