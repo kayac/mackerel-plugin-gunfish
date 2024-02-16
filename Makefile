@@ -22,4 +22,4 @@ clean:
 release: dist
 	ghr -u kayac -r mackerel-plugin-gunfish $(LATEST_TAG) dist/snapshot/
 
-.PHONY: packages test lint clean dist
+.PHONY: packages packages-snapshot test lint clean dist
